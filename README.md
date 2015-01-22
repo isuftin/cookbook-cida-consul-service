@@ -31,9 +31,9 @@ Usage
     
     default["cida_consul_service"]["services"]["caching"]["tags"] = ["caching"]
     
-    default["cida_consul_service"]["services"]["check"]["interval"] = "10s"
+    default["cida_consul_service"]["services"]["caching"]["check"]["interval"] = "10s"
     
-    default["cida_consul_service"]["services"]["check"]["script"] = "echo ok"
+    default["cida_consul_service"]["services"]["caching"]["check"]["script"] = "echo ok"
     
     default["cida_consul_service"]["services"]["msg_broker"]["port"] = 5672
     
