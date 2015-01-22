@@ -19,8 +19,8 @@ Attributes
 ----------
  - `default["cida_consul_service"]["services"][service_name]["port"]` = Required. The port at which the service is listening. (Integer)
  - `default["cida_consul_service"]["services"][service_name]["tags"]` = Optional. An array of strings that are used to tag the service. (Array of String)
- - `default["cida_consul_service"]["services"][service_name]["interval"]` = Optional. A string representing time. Instructs how often the agent should check the service. (e.g. "10s") (String) ( See https://consul.io/docs/agent/checks.html  )
- - `default["cida_consul_service"]["services"][service_name]["script"]` = Optional. "echo ok" (String) ( See https://consul.io/docs/agent/checks.html )
+ - `default["cida_consul_service"]["services"][service_name]["check"]["interval"]` = Optional. A string representing time. Instructs how often the agent should check the service. (e.g. "10s") (String) ( See https://consul.io/docs/agent/checks.html  )
+ - `default["cida_consul_service"]["services"][service_name]["check"]["script"]` = Optional. "echo ok" (String) ( See https://consul.io/docs/agent/checks.html )
 
 Usage
 -----
