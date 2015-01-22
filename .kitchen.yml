@@ -1,0 +1,60 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: centos-6.6-vbox
+    driver:
+      box: chef/centos-6.6
+      box_url: chef/centos-6.6
+      provider: virtualbox
+  - name: centos-6.6-vmware
+    driver:
+      box: chef/centos-6.6
+      box_url: chef/centos-6.6
+      provider: vmware_fusion
+
+suites:
+  - name: default
+    driver:
+        network:
+        - ["private_network", {ip: "10.0.0.17"}]
+    run_list:
+        - recipe[cida_consul_service::default]
+    attributes: {
+        "cida_consul_service": {
+            "services": {
+                "caching": {
+                    "port": 6379,
+                    "tags": [ "caching" ],
+                    "check" : {
+                        "interval" : "15s",
+                        "script" : "echo OK"
+                        }
+                },
+                "msg_brokerss": {
+                    "port": 5672,
+                    "tags": [ "messaging" ]
+                }
+            }
+        },
+        "consul": {
+            "advertise_interface": "eth1",
+            "bind_interface": "eth1",
+            "bootstrap_expect": "3",
+            "enable_syslog": true,
+            "log_level": "debug",
+            "retry_on_join": true,
+            "servers": [
+                "10.0.0.11"
+            ],
+            "service_user" : "root",
+            "service_group" : "root",
+            "node_name" : "ms-node-1",
+            "advertise_addr" : "10.0.0.17"
+        }
+    }
+        
