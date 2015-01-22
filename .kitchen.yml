@@ -35,7 +35,7 @@ suites:
                         "script" : "echo OK"
                         }
                 },
-                "msg_brokerss": {
+                "msg_broker": {
                     "port": 5672,
                     "tags": [ "messaging" ]
                 }
